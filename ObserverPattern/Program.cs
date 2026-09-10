@@ -22,6 +22,16 @@ namespace ObserverPattern
             forecastDisplay.Display();
             statisticsDisplay.Display();
 
+            weatherData.RemoveObserver(forecastDisplay);
+
+            Console.WriteLine("ForecastDisplay is unsubscribed.");
+
+            weatherData.SetMeasurements(25, 40, 28.5f);
+
+            currentConditionDisplay.Display();
+            forecastDisplay.Display();
+            statisticsDisplay.Display();
+
         }
     }
 }
