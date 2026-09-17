@@ -10,28 +10,19 @@ namespace ObserverPattern
 
             // Create instances of displays 
 
-            weatherData.SetMeasurements(28, 65, 30.4f);
-            weatherData.SetMeasurements(29, 70, 29.2f);
-            weatherData.SetMeasurements(30, 90, 29.2f);
-
             CurrentConditionDisplay currentConditionDisplay = new CurrentConditionDisplay(weatherData);
             ForecastDisplay forecastDisplay = new ForecastDisplay(weatherData);
             StatisticsDisplay statisticsDisplay = new StatisticsDisplay(weatherData);
 
-            currentConditionDisplay.Display();
-            forecastDisplay.Display();
-            statisticsDisplay.Display();
+            weatherData.SetMeasurements(28, 65, 30.4f);
+            weatherData.SetMeasurements(29, 70, 29.2f);
+            weatherData.SetMeasurements(30, 90, 29.2f);
 
             weatherData.RemoveObserver(forecastDisplay);
 
             Console.WriteLine("ForecastDisplay is unsubscribed.");
 
             weatherData.SetMeasurements(25, 40, 28.5f);
-
-            currentConditionDisplay.Display();
-            forecastDisplay.Display();
-            statisticsDisplay.Display();
-
         }
     }
 }
