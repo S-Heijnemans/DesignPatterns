@@ -1,15 +1,15 @@
-﻿using DecoratorPattern.Beverages;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DecoratorPattern.Beverages;
 
 namespace DecoratorPattern.Condiments
 {
-    internal class Whip : CondimentDecorator
+    internal class MilkFoam : CondimentDecorator
     {
-        public Whip(Beverage beverage)
+        public MilkFoam(Beverage beverage)
         {
             this.baseBeverage = beverage;
         }
@@ -38,7 +38,8 @@ namespace DecoratorPattern.Condiments
 
         public override string GetDescription()
         {
-            return baseBeverage.GetDescription() + ", Whip";
+            return baseBeverage.GetDescription() + ", Milk Foam";
         }
+
     }
 }

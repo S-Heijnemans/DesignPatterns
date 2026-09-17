@@ -1,17 +1,18 @@
-﻿using DecoratorPattern.Beverages;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DecoratorPattern.Beverages;
 
 namespace DecoratorPattern.Condiments
 {
-    internal class Whip : CondimentDecorator
+    internal class IceCream : CondimentDecorator
     {
-        public Whip(Beverage beverage)
+        public IceCream(Beverage beverage)
         {
             this.baseBeverage = beverage;
+            this.Size = beverage.Size;
         }
 
         public override double cost()
@@ -38,7 +39,7 @@ namespace DecoratorPattern.Condiments
 
         public override string GetDescription()
         {
-            return baseBeverage.GetDescription() + ", Whip";
+            return baseBeverage.GetDescription() + ", Ice Cream";
         }
     }
 }
