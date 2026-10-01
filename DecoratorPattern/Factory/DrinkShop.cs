@@ -12,20 +12,24 @@ namespace DecoratorPattern.Factory
     {
         public virtual Beverage OrderDrink(string order, Size size)
         {
-            Beverage bevarage = new CreateDrink(order, size);
+            Beverage beverage = CreateDrink(order);
 
+            beverage.Size = size;
 
-            //if (order.Equals("lungo"))
-            //{
-            //    bevarage = new Espresso();
-            //    bevarage.Size = size;
-            //    bevarage = new Water(bevarage);
-            //}
+            PrintBeverage(beverage);
 
-            PrintBeverage(bevarage);
-
-            return bevarage;
+            return beverage;
         }
-        protected abstract Bevarage CreatePizza(string order, Size size);
+            
+        protected abstract Beverage CreateDrink(string order);
+
+        protected void PrintBeverage(Beverage beverage)
+        {
+            Console.WriteLine(
+                beverage.GetDescription() + " $" +
+                beverage.cost().ToString("#.##")
+            );
+        }
     }
 }
+

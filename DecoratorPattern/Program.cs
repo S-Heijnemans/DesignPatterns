@@ -1,6 +1,5 @@
-﻿using System.ComponentModel;
-using DecoratorPattern.Beverages;
-using DecoratorPattern.Condiments;
+﻿using DecoratorPattern.Beverages;
+using DecoratorPattern.Factory;
 
 namespace DecoratorPattern
 {
@@ -8,185 +7,65 @@ namespace DecoratorPattern
     {
         static void Main(string[] args)
         {
-            Beverage espresso = new Espresso();
-            espresso.Size = Size.TALL;
-            PrintBeverage(espresso);
+            SvenCoffeeShop shop = new SvenCoffeeShop();
 
-            Beverage doppio = new Espresso();
-            doppio.Size = Size.VENDI;
-            PrintBeverage(doppio);
+            Beverage espresso = shop.OrderDrink("espresso", Size.TALL);
 
-            Beverage lungo = new Espresso();
-            lungo.Size = Size.GRANDE;
-            lungo = new Water(lungo);
-            PrintBeverage(lungo);
+            Beverage doppio = shop.OrderDrink("doppio", Size.VENDI);
 
-            Beverage americano = new Espresso();
-            americano.Size = Size.TALL;
-            americano = new Water(americano);
-            americano = new Water(americano);
-            PrintBeverage(americano);
+            Beverage lungo = shop.OrderDrink("lungo", Size.GRANDE);
 
-            Beverage macchiato = new Espresso();
-            macchiato.Size = Size.TALL;
-            macchiato = new MilkFoam(macchiato);
-            PrintBeverage(macchiato);
+            Beverage americano = shop.OrderDrink("americano", Size.TALL);
 
-            Beverage corretta = new Espresso();
-            corretta.Size = Size.VENDI;
-            corretta = new Liqour(corretta);
-            PrintBeverage(corretta);
+            Beverage macchiato = shop.OrderDrink("macchiato", Size.TALL);
 
-            Beverage conPanna = new Espresso();
-            conPanna.Size = Size.GRANDE;
-            conPanna = new Whip(conPanna);
-            PrintBeverage(conPanna);
+            Beverage corretta = shop.OrderDrink("corretta", Size.VENDI);
 
-            Beverage cappucinno = new Espresso();
-            cappucinno.Size = Size.GRANDE;
-            cappucinno = new SteamedMilk(cappucinno);
-            cappucinno = new MilkFoam(cappucinno);
-            PrintBeverage(cappucinno);
+            Beverage conPanna = shop.OrderDrink("conPanna", Size.GRANDE);
 
-            Beverage cafféLatte = new Espresso();
-            cafféLatte.Size = Size.TALL;
-            cafféLatte = new SteamedMilk(cafféLatte);
-            cafféLatte = new SteamedMilk(cafféLatte);
-            cafféLatte = new MilkFoam(cafféLatte);
-            PrintBeverage(cafféLatte);
+            Beverage cappucinno = shop.OrderDrink("cappucinno", Size.GRANDE);
 
-            Beverage flatWhite = new Espresso();
-            flatWhite.Size = Size.TALL;
-            flatWhite = new SteamedMilk(flatWhite);
-            flatWhite = new SteamedMilk(flatWhite);
-            PrintBeverage(flatWhite);
+            Beverage cafféLatte = shop.OrderDrink("cafféLatte", Size.TALL);
 
-            Beverage romana = new Espresso();
-            romana.Size = Size.TALL;
-            romana = new Lemon(romana);
-            PrintBeverage(romana);
+            Beverage flatWhite = shop.OrderDrink("flatWhite", Size.TALL);
 
-            Beverage morocchino = new Espresso();
-            morocchino.Size = Size.TALL;
-            morocchino = new ChocolateCondoment(morocchino);
-            morocchino = new MilkFoam(morocchino);
-            PrintBeverage(morocchino);
+            Beverage romana = shop.OrderDrink("romana", Size.TALL);
 
-            Beverage mocha = new Espresso();
-            mocha.Size = Size.TALL;
-            mocha = new ChocolateCondoment(mocha);
-            mocha = new SteamedMilk(mocha);
-            mocha = new Whip(mocha);
-            PrintBeverage(mocha);
+            Beverage morocchino = shop.OrderDrink("morocchino", Size.TALL);
 
-            Beverage bicerin = new Espresso();
-            bicerin.Size = Size.TALL;
-            bicerin = new BlackChocolate(bicerin);
-            bicerin = new WhiteChocolate(bicerin);
-            bicerin = new Whip(bicerin);
-            PrintBeverage(bicerin);
+            Beverage mocha = shop.OrderDrink("mocha", Size.TALL);
 
-            Beverage breve = new Espresso();
-            breve.Size = Size.TALL;
-            breve = new MilkFoam(breve);
-            breve = new HalfMilk(breve);
-            PrintBeverage(breve);
+            Beverage bicerin = shop.OrderDrink("bicerin", Size.TALL);
 
-            Beverage rafcoffee = new Espresso();
-            rafcoffee.Size = Size.TALL;
-            rafcoffee = new VanillaSugar(rafcoffee);
-            rafcoffee = new Cream(rafcoffee);
-            PrintBeverage(rafcoffee);
+            Beverage breve = shop.OrderDrink("breve", Size.TALL);
 
-            Beverage meadraf = new Espresso();
-            meadraf.Size = Size.TALL;
-            meadraf = new Honey(meadraf);
-            meadraf = new Cream(meadraf);
-            PrintBeverage(meadraf);
+            Beverage rafcoffee = shop.OrderDrink("rafcoffee", Size.TALL);
 
-            Beverage galao = new Espresso();
-            galao.Size = Size.TALL;
-            galao = new MilkFoam(galao);
-            galao = new MilkFoam(galao);
-            PrintBeverage(galao);
+            Beverage meadraf = shop.OrderDrink("meadraf", Size.TALL);
 
-            Beverage cafféaffogato = new Espresso();
-            cafféaffogato.Size = Size.TALL;
-            cafféaffogato = new Espresso(cafféaffogato);
-            cafféaffogato = new IceCream(cafféaffogato);
-            PrintBeverage(cafféaffogato);
+            Beverage galao = shop.OrderDrink("galao", Size.TALL);
 
-            Beverage viennacoffee = new Espresso();
-            viennacoffee.Size = Size.TALL;
-            viennacoffee = new Espresso(viennacoffee);
-            viennacoffee = new Whip(viennacoffee);
-            viennacoffee = new Whip(viennacoffee);
-            PrintBeverage(viennacoffee);
+            Beverage cafféaffogato = shop.OrderDrink("cafféaffogato", Size.TALL);
 
-            Beverage glace = new Espresso();
-            glace.Size = Size.TALL;
-            glace = new IceCream(glace);
-            PrintBeverage(glace);
+            Beverage viennacoffee = shop.OrderDrink("viennacoffee", Size.TALL);
 
-            Beverage chocolatemilk = new Chocolate();
-            chocolatemilk.Size = Size.TALL;
-            chocolatemilk = new Milk(chocolatemilk);
-            chocolatemilk = new Milk(chocolatemilk);
-            PrintBeverage(chocolatemilk);
+            Beverage glace = shop.OrderDrink("glace", Size.TALL);
 
-            Beverage demicréme = new Espresso();
-            demicréme.Size = Size.TALL;
-            demicréme = new Espresso(demicréme);
-            demicréme = new Cream(demicréme);
-            demicréme = new Cream(demicréme);
-            PrintBeverage(demicréme);
+            Beverage chocolatemilk = shop.OrderDrink("chocolatemilk", Size.TALL);
 
-            Beverage lattemacchiato = new Espresso();
-            lattemacchiato.Size = Size.TALL;
-            lattemacchiato = new SteamedMilk(lattemacchiato);
-            lattemacchiato = new SteamedMilk(lattemacchiato);
-            lattemacchiato = new MilkFoam(lattemacchiato);
-            PrintBeverage(lattemacchiato);
+            Beverage demicréme = shop.OrderDrink("demicréme", Size.TALL);
 
-            Beverage freddo = new Espresso();
-            freddo.Size = Size.TALL;
-            freddo = new Liqour(freddo);
-            freddo = new Ice(freddo);
-            PrintBeverage(freddo);
+            Beverage lattemacchiato = shop.OrderDrink("lattemacchiato", Size.TALL);
 
-            Beverage frappuccino = new Espresso();
-            frappuccino.Size = Size.TALL;
-            frappuccino = new Ice(frappuccino);
-            frappuccino = new SteamedMilk(frappuccino);
-            frappuccino = new Whip(frappuccino);
-            PrintBeverage(frappuccino);
+            Beverage freddo = shop.OrderDrink("freddo", Size.TALL);
 
-            Beverage caramelfrappuccino = new Espresso();
-            caramelfrappuccino.Size = Size.TALL;
-            caramelfrappuccino = new Ice(caramelfrappuccino);
-            caramelfrappuccino = new SteamedMilk(caramelfrappuccino);
-            caramelfrappuccino = new Cream(caramelfrappuccino);
-            caramelfrappuccino = new Syrup(caramelfrappuccino);
-            PrintBeverage(caramelfrappuccino);
+            Beverage frappuccino = shop.OrderDrink("frappuccino", Size.TALL);
 
-            Beverage frappe = new Espresso();
-            frappe.Size = Size.TALL;
-            frappe = new SteamedMilk(frappe);
-            frappe = new SteamedMilk(frappe);
-            frappe = new IceCream(frappe);
-            PrintBeverage(frappe);
+            Beverage caramelfrappuccino = shop.OrderDrink("caramelfrappuccino", Size.TALL);
 
-            Beverage irishCoffee = new Espresso();
-            irishCoffee.Size = Size.TALL;
-            irishCoffee = new Espresso(irishCoffee);
-            irishCoffee = new Whiskey(irishCoffee);
-            irishCoffee = new Whip(irishCoffee);
-            PrintBeverage(irishCoffee);
-        }
+            Beverage frappe = shop.OrderDrink("frappe", Size.TALL);
 
-        static void PrintBeverage(Beverage beverage)
-        {
-            Console.WriteLine(beverage.GetDescription() + " $" +  beverage.cost().ToString("#.##"));
+            Beverage irishCoffee = shop.OrderDrink("irishCoffee", Size.TALL);
         }
     }
 }
