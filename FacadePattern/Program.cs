@@ -1,4 +1,6 @@
-﻿namespace FacadePattern
+﻿using FacadePattern.Facade;
+
+namespace FacadePattern
 {
     internal class Program
     {
@@ -12,26 +14,10 @@
             Screen screen = new Screen();
             TheaterLights lights = new TheaterLights();
             Tuner tuner = new Tuner(amp);
+            HomeTheatorFacade homeTheatorFacade = new HomeTheatorFacade(dvdPlayer, cdPlayer, screen, lights, projector, popcornPopper, amp);
 
-
-            popcornPopper.On();
-            popcornPopper.Pop();
-
-            lights.Dim(10);
-
-            screen.Down();
-
-            projector.On();
-            projector.SetInput(dvdPlayer);
-            projector.WideScreenMode();
-
-            amp.On();
-            amp.SetDvd(dvdPlayer);
-            amp.SetSurroundSound();
-            amp.SetVolume(5);
-
-            dvdPlayer.On();
-            dvdPlayer.Play("Die Hard");
+            homeTheatorFacade.WatchMovie("Die Hard");
+            homeTheatorFacade.EndMovie();
         }
     }
 }
