@@ -31,28 +31,22 @@ namespace FacadePattern.Facade
         {
             _popcornPopper.On();
             _popcornPopper.Pop();
-            Console.WriteLine("popping popcorn");
 
             _theaterLights.Dim(10);
-            Console.WriteLine("dimming the lights");
 
             _screen.Down();
-            Console.WriteLine("letting down the screen");
 
             _projector.On();
             _projector.SetInput(_dvdPlayer);
             _projector.WideScreenMode();
-            Console.WriteLine("turn on projector and set dvd player and set wide sceen mode");
 
             _amplifier.On();
             _amplifier.SetDvd(_dvdPlayer);
             _amplifier.SetSurroundSound();
             _amplifier.SetVolume(5);
-            Console.WriteLine("the dvd player is set along with the surround sound with the volume set to 5");
 
             _dvdPlayer.On();
             _dvdPlayer.Play(movie);
-            Console.WriteLine("dvd player is turned on and the movie is played");
         }
 
         public void EndMovie()

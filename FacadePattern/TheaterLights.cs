@@ -10,17 +10,17 @@ namespace FacadePattern
     {
         public void On()
         {
-
+            Console.WriteLine("Lights turned on");
         }
 
         public void Off()
         {
-
+            Console.WriteLine("Lights turned off");
         }
 
         public void Dim(int value)
         {
-
+            Console.WriteLine("Lights are dimmed");
         }
     }
 }
