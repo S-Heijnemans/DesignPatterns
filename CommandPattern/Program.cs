@@ -41,7 +41,7 @@ namespace CommandPattern
             StereoOnWithCdCommand stereoOnWithCdCommand = new StereoOnWithCdCommand(stereo);
             StereoOnWithDvdCommand stereoOnWithDvdCommand = new StereoOnWithDvdCommand(stereo);
             StereoOnWithRadioCommand stereoOnWithRadioCommand = new StereoOnWithRadioCommand(stereo);
-            
+
 
 
 
@@ -53,13 +53,77 @@ namespace CommandPattern
              * 4: Garage door
              * 5: Stereo
              */
-            
+            remoteControl.SetCommand(1, lightOnCommandLivingroom, lightOffCommandLivingroom);
+            remoteControl.SetCommand(2, lightOnCommandKitchen, lightOffCommandKitchen);
+            remoteControl.SetCommand(3, ceilingFanHighCommand, ceilingFanOffCommand);
+            remoteControl.SetCommand(4, garageDoorUpCommand, garageDoorDownCommand);
+            remoteControl.SetCommand(5, stereoOnWithCdCommand, stereoOffCommand);
 
             Console.WriteLine(remoteControl);
 
             // Test the pressing of Buttons here. Don't forget to test the Undo button
+            Console.WriteLine(" TEST 1: Living Room Light");
+
+            remoteControl.OnButtonWasPushed(1);
+            remoteControl.OffButtonWasPushed(1);
+
+            remoteControl.UndoButtonWasPushed();
+            remoteControl.UndoButtonWasPushed();
+
+            Console.WriteLine(" TEST 2: Kitchen Light");
+
+            remoteControl.OnButtonWasPushed(2);
+            remoteControl.OffButtonWasPushed(2);
+
+            remoteControl.UndoButtonWasPushed();
+            remoteControl.UndoButtonWasPushed();
 
 
+            Console.WriteLine(" TEST 3: Ceiling Fan");
+
+            remoteControl.OnButtonWasPushed(3);
+            remoteControl.OffButtonWasPushed(3);
+
+            remoteControl.UndoButtonWasPushed();
+            remoteControl.UndoButtonWasPushed();
+
+            Console.WriteLine(" TEST 4: Ceiling Fan Speeds ");
+
+            ceilingFanLowCommand.Execute();
+            ceilingFanMediumCommand.Execute();
+            ceilingFanHighCommand.Execute();
+
+            Console.WriteLine(" Undo High ");
+            ceilingFanHighCommand.Undo();
+
+            Console.WriteLine(" Undo Medium ");
+            ceilingFanMediumCommand.Undo();
+
+            Console.WriteLine(" Undo Low ");
+            ceilingFanLowCommand.Undo();
+
+            Console.WriteLine(" TEST 5: Garage Door");
+
+            remoteControl.OnButtonWasPushed(4);
+            remoteControl.OffButtonWasPushed(4);
+
+            remoteControl.UndoButtonWasPushed();
+            remoteControl.UndoButtonWasPushed();
+
+            Console.WriteLine(" TEST 6: Stereo ");
+
+            remoteControl.OnButtonWasPushed(5);
+            remoteControl.OffButtonWasPushed(5);
+
+            remoteControl.UndoButtonWasPushed();
+            remoteControl.UndoButtonWasPushed();
+
+            Console.WriteLine(" TEST 7: Stereo Modes ");
+
+            stereoOnWithCdCommand.Execute();
+            stereoOnWithDvdCommand.Execute();
+            stereoOnWithRadioCommand.Execute();
+            stereoOffCommand.Execute();
         }
     }
 }
