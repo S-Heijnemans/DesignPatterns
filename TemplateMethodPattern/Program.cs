@@ -22,8 +22,8 @@ namespace TemplateMethodPattern
 
             Console.WriteLine("\n\n Now with hooked classes\n\n");
 
-            // You'll need this method for the second part of the Template Method Pattern
-            /*Duck[] ducks =
+            //You'll need this method for the second part of the Template Method Pattern
+            Duck[] ducks =
             {
                 new Duck("Daffy", 8),
                 new Duck("Dewey", 2),
@@ -34,7 +34,12 @@ namespace TemplateMethodPattern
             };
 
             Console.WriteLine("Before sorting:");
-            Display(ducks);*/
+            Display(ducks);
+
+            Array.Sort(ducks);
+
+            Console.WriteLine("After sorting:");
+            Display(ducks);
         }
 
         // You'll need this method for the second part of the Template Method Pattern

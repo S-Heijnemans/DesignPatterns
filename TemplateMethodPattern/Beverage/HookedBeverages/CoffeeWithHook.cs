@@ -1,20 +1,20 @@
 ﻿namespace TemplateMethodPattern
 {
-    internal class CoffeeWithHook : CaffeineBeverageWithHook
+    internal class ChocolateMilkWithHook : CaffeineBeverageWithHook
     {
         public override void Brew()
         {
-            Console.WriteLine("Dripping Coffee through filter");
+            Console.WriteLine("Adding chocolate milk powder to hot water");
         }
 
         public override void AddCondiments()
         {
-            Console.WriteLine("Adding Sugar and Milk");
+            Console.WriteLine("Adding Whipcream");
         }
 
         public override bool CustomerWantsCondement()
         {
-            Console.WriteLine("Would you like milk and sugar with your coffee (y/n)?");
+            Console.WriteLine("Would you like Whipcream with your chocolate milk (y/n)?");
             string answer = Console.ReadLine();
             return answer.ToLower().StartsWith('y');
         }
